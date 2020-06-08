@@ -19,12 +19,13 @@ from tg_bot.modules.helper_funcs.misc import paginate_modules
 PM_START_TEXT = """
 Hi {}, my name is {}! 
 // I am an Anime themed group management bot with a lot of Special Features.
+I'm a Clone of Lynda
 You can find the list of available commands with /help.
 ==========================
 -> [Lynda's Repo](https://waa.ai/Lynda)
--> Report [Lynda Support](https://t.me/LyndaEagleSupport) if I go offline
+-> Report [Keiko Support](https://t.me/KeikoSupport) if I go offline
 ==========================
-`Maintained by` @YorktownEagleUnion
+`Maintained by` [Sophisticated Delelopers](https://t.me/Dev_OwO)
 
 """
 
