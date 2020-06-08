@@ -22,8 +22,9 @@ Hi {}, my name is {}!
 I'm a Clone of Lynda
 You can find the list of available commands with /help.
 ==========================
--> [Lynda's Repo](https://waa.ai/Lynda)
--> Report [Keiko Support](https://t.me/KeikoSupport) if I go offline
+=> Report [Keiko Support](https://t.me/KeikoSupport) if I go offline
+=> For New Updates Visit [Keiko Updates](https://t.me/KeikoUpdates)
+=> [Lynda's Repo](https://waa.ai/Lynda)
 ==========================
 `Maintained by` [Sophisticated Delelopers](https://t.me/Dev_OwO)
 
@@ -31,10 +32,12 @@ You can find the list of available commands with /help.
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I'm a part of Eagle Union.
+I'm a part of [Sophisticated Developers](https://t.me/Dev_OwO).
 Have a look at the following for an idea of some of \
 the things I can help you with.
-I'm managed by [Aman_Ahmed](https://t.me/Aman_Ahmed)
+I'm managed by [Wrench](https://t.me/WhySooSerious)
+
+Cloned from [Lynda](https://waa.ai/Lynda)
 Chatbot module from [TheRealPhoenixBot](https://github.com/rsktg/TheRealPhoenixBot.git)
 Disaster module from [SaitamaRobot](https://github.com/AnimeKaizoku/SaitamaRobot)
 *Main* commands available:
@@ -144,14 +147,14 @@ def start(bot: Bot, update: Update, args: List[str]):
         else:
             first_name = update.effective_user.first_name
             buttons = InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="👥 Add Lynda to your group", url="https://t.me/LyndaRobot?startgroup=new")],
-                [InlineKeyboardButton(text="🙋 Support Group", url="https://t.me/LyndaEagleSupport"), InlineKeyboardButton(text="🚫 Global Logs", url="https://t.me/LyndaGLogs")],
-                [InlineKeyboardButton(text="❔ Help", callback_data="help_back"), InlineKeyboardButton(text="🔔 Update Channel", url="https://t.me/LyndaUpdates")]])
+                [[InlineKeyboardButton(text="👥 Add Keiko to your group", url="https://t.me/KeikoSDbot?startgroup=new")],
+                [InlineKeyboardButton(text="🙋 Support Group", url="https://t.me/KeikoSupport"), InlineKeyboardButton(text="🚫 Global Logs", url="https://t.me/LyndaGLogs")],
+                [InlineKeyboardButton(text="❔ Help", callback_data="help_back"), InlineKeyboardButton(text="🔔 Update Channel", url="https://t.me/KeikoUpdates")]])
             update.effective_message.reply_photo(LYNDA_IMG,
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
                 parse_mode=ParseMode.MARKDOWN, reply_markup=buttons)
     else:
-        update.effective_message.reply_text("Yo, whadup?")
+        update.effective_message.reply_text("Hey, Wassup?")
 
 
 # for test purposes
