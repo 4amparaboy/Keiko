@@ -36,10 +36,11 @@ I'm a part of [Sophisticated Developers](https://t.me/Dev_OwO).
 Have a look at the following for an idea of some of \
 the things I can help you with.
 I'm managed by [Wrench](https://t.me/WhySooSerious)
-
+==========================
 Cloned from [Lynda](https://waa.ai/Lynda)
 Chatbot module from [TheRealPhoenixBot](https://github.com/rsktg/TheRealPhoenixBot.git)
 Disaster module from [SaitamaRobot](https://github.com/AnimeKaizoku/SaitamaRobot)
+==========================
 *Main* commands available:
  - /start: start the bot
  - /help: PM's you this message.
@@ -148,7 +149,7 @@ def start(bot: Bot, update: Update, args: List[str]):
             first_name = update.effective_user.first_name
             buttons = InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text="👥 Add Keiko to your group", url="https://t.me/KeikoSDbot?startgroup=new")],
-                [InlineKeyboardButton(text="🙋 Support Group", url="https://t.me/KeikoSupport"), InlineKeyboardButton(text="🚫 Global Logs", url="https://t.me/LyndaGLogs")],
+                [InlineKeyboardButton(text="🙋 Support Group", url="https://t.me/KeikoSupport"), InlineKeyboardButton(text="🚫 Global Logs", url="https://t.me/KeikoGLogs")],
                 [InlineKeyboardButton(text="❔ Help", callback_data="help_back"), InlineKeyboardButton(text="🔔 Update Channel", url="https://t.me/KeikoUpdates")]])
             update.effective_message.reply_photo(LYNDA_IMG,
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
