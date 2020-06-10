@@ -35,7 +35,7 @@ Hey there! My name is *{}*.
 I'm a part of [Sophisticated Developers](https://t.me/Dev_OwO).
 Have a look at the following for an idea of some of \
 the things I can help you with.
-I'm managed by [Wrench](https://t.me/WhySooSerious)
+I'm managed by [WRENCH](https://t.me/T_b0n3)
 ==========================
 Cloned from [Kigyō](https://github.com/Dank-del/EnterpriseALRobot)
 Chatbot module from [TheRealPhoenixBot](https://github.com/rsktg/TheRealPhoenixBot.git)
