@@ -19,12 +19,12 @@ from tg_bot.modules.helper_funcs.misc import paginate_modules
 PM_START_TEXT = """
 Hi {}, my name is {}! 
 // I am an Anime themed group management bot with a lot of Special Features.
-I'm a Clone of Lynda
+I'm a Clone of Kigyō
 You can find the list of available commands with /help.
 ==========================
 => Report [Keiko Support](https://t.me/KeikoSupport) if I go offline
 => For New Updates Visit [Keiko Updates](https://t.me/KeikoUpdates)
-=> [Lynda's Repo](https://waa.ai/Lynda)
+=> [Kigyō's Repo](https://github.com/Dank-del/EnterpriseALRobot)
 ==========================
 `Maintained by` [Sophisticated Delelopers](https://t.me/Dev_OwO)
 
@@ -37,11 +37,11 @@ Have a look at the following for an idea of some of \
 the things I can help you with.
 I'm managed by [Wrench](https://t.me/WhySooSerious)
 ==========================
-Cloned from [Lynda](https://waa.ai/Lynda)
+Cloned from [Kigyō](https://github.com/Dank-del/EnterpriseALRobot)
 Chatbot module from [TheRealPhoenixBot](https://github.com/rsktg/TheRealPhoenixBot.git)
 Disaster module from [SaitamaRobot](https://github.com/AnimeKaizoku/SaitamaRobot)
 ==========================
-*Main* commands available:
+*Main* commands available[:](https://telegra.ph/file/02cc6f9d677781a34edf4.jpg)
  - /start: start the bot
  - /help: PM's you this message.
  - /help <module name>: PM's you info about that module.
