@@ -93,7 +93,7 @@ __help__ = """
 Chatbot utilizes the CoffeeHouse API and allows Kēiko to talk back making your chat more interactive.
 This is an ongoing upgrade and is only available in your chats if you reach out to the [Support Group](https://t.me/KeikoSupport) and ask for it. 
 In future we might make it open for any chat and controllable by group admins.
-Powered by CoffeeHouse (https://coffeehouse.intellivoid.net/) from @Intellivoid
+Powered by [CoffeeHouse](https://coffeehouse.intellivoid.net/) from @Intellivoid
 Commands: These only work for Keiko Staff users. 
  - /addchat : Enables Chatbot mode in the chat.
  - /rmchat  : Disables Chatbot mode in the chat.
