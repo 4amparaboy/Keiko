@@ -31,12 +31,12 @@ def paste(bot: Bot, update: Update, args: List[str]):
     message.reply_text(reply_text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
 __help__ = """
- - /paste - Do a paste at `neko.bin`
+ - /nekobin - Do a paste at `neko.bin`
 """
 
 PASTE_HANDLER = DisableAbleCommandHandler("nekobin", nekobin, pass_args=True)
-dispatcher.add_handler(PASTE_HANDLER)
+dispatcher.add_handler(NEKOBIN_HANDLER)
 
 __mod_name__ = "Nekobin"
 __command_list__ = ["nekobin"]
-__handlers__ = [PASTE_HANDLER]
+__handlers__ = [NEKOBIN_HANDLER]
