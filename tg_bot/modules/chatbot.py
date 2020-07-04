@@ -7,11 +7,12 @@ from coffeehouse.exception import CoffeeHouseError as CFError
 
 from telegram import Message, Chat, User, Update, Bot
 from telegram.ext import CommandHandler, MessageHandler, Filters, run_async
+from telegram.error import BadRequest, Unauthorized, RetryAfter
 
 from tg_bot import dispatcher, AI_API_KEY, OWNER_ID
 import tg_bot.modules.sql.chatbot_sql as sql
 from tg_bot.modules.helper_funcs.filters import CustomFilters
-
+from tg_bot.modules.helper_funcs.filters import CustomFilters
 
 CoffeeHouseAPI = API(AI_API_KEY)
 api_client = LydiaAI(CoffeeHouseAPI)
@@ -86,6 +87,22 @@ def chatbot(bot: Bot, update: Update):
         except CFError as e:
             bot.send_message(OWNER_ID, f"Chatbot error: {e} occurred in {chat_id}!")
                     
+@run_async
+def list_chatbot(bot: Bot, update: Update):
+    chats = sql.get_all_chats()
+    text = "<b>AI-Enabled Chats</b>\n"
+    for chat in chats:
+        try:
+            x = bot.get_chat(int(*chat))
+            name = x.title if x.title else x.first_name
+            text += f"• <code>{name}</code>\n"
+        except BadRequest:
+            sql.rem_chat(*chat)
+        except Unauthorized:
+            sql.rem_chat(*chat)
+        except RetryAfter as e:
+            sleep(e.retry_after)
+    update.effective_message.reply_text(text, parse_mode="HTML")
 
 __mod_name__ = "Chatbot"
 
@@ -97,6 +114,8 @@ Powered by [CoffeeHouse](https://coffeehouse.intellivoid.net/) from @Intellivoid
 Commands: These only work for Keiko Staff users. 
  - /addchat : Enables Chatbot mode in the chat.
  - /rmchat  : Disables Chatbot mode in the chat.
+*Nation Level Required:* 
+ - /listai :  Lists the chats the chatmode is enabled in.
 """
                   
 ADD_CHAT_HANDLER = CommandHandler("addchat", add_chat, filters=CustomFilters.dev_filter)
@@ -104,7 +123,9 @@ REMOVE_CHAT_HANDLER = CommandHandler("rmchat", remove_chat, filters=CustomFilter
 CHATBOT_HANDLER = MessageHandler(Filters.text & (~Filters.regex(r"^#[^\s]+") & ~Filters.regex(r"^!")
                                   & ~Filters.regex(r"^s\/")), chatbot)
 # Filters for ignoring #note messages, !commands and sed.
+CHATBOTLIST_HANDLER = CommandHandler("listai", list_chatbot, filters=CustomFilters.dev_filter)
 
 dispatcher.add_handler(ADD_CHAT_HANDLER)
 dispatcher.add_handler(REMOVE_CHAT_HANDLER)
 dispatcher.add_handler(CHATBOT_HANDLER)
+dispatcher.add_handler(CHATBOTLIST_HANDLER)
