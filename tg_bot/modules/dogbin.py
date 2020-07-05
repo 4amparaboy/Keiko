@@ -127,8 +127,8 @@ __mod_name__ = "Dogbin"
 
 PASTE_HANDLER = DisableAbleCommandHandler("dogbin", dogbin, pass_args=True)
 GET_PASTE_HANDLER = DisableAbleCommandHandler("getdogbin", get_dogbin_content, pass_args=True)
-PASTE_STATS_HANDLER = DisableAbleCommandHandler("dogbinstats", get_dogbin_stats, pass_args=True)
+PASTE_STATS_HANDLER = DisableAbleCommandHandler("dogbinstats", getdogbin_stats, pass_args=True)
 
 dispatcher.add_handler(DOGBIN_HANDLER)
-dispatcher.add_handler(GET_DOGBIN_HANDLER)
-dispatcher.add_handler(DOGBIN_STATS_HANDLER)
+dispatcher.add_handler(GETDOGBIN_HANDLER)
+dispatcher.add_handler(DOGBINSTATS_HANDLER)
