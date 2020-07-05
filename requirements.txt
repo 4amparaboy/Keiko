@@ -32,4 +32,4 @@ uptime
 py-cpuinfo
 nekos.py
 tabulate
-uptime	parsel 
+parsel 
