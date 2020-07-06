@@ -16,7 +16,7 @@ from keiko.modules.disable import DisableAbleCommandHandler
 BASE_URL = 'https://del.dog'
 
 @run_async
-def paste(bot: Bot, update: Update, args: List[str]):
+def dogbin(bot: Bot, update: Update, args: List[str]):
     message = update.effective_message
 
     if message.reply_to_message:
@@ -47,7 +47,7 @@ def paste(bot: Bot, update: Update, args: List[str]):
     update.effective_message.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
 
 @run_async
-def get_paste_content(bot: Bot, update: Update, args: List[str]):
+def get_dogbin_content(bot: Bot, update: Update, args: List[str]):
     message = update.effective_message
 
     if len(args) >= 1:
@@ -80,7 +80,7 @@ def get_paste_content(bot: Bot, update: Update, args: List[str]):
     update.effective_message.reply_text('```' + escape_markdown(r.text) + '```', parse_mode=ParseMode.MARKDOWN)
 
 @run_async
-def get_paste_stats(bot: Bot, update: Update, args: List[str]):
+def get_dogbin_stats(bot: Bot, update: Update, args: List[str]):
     message = update.effective_message
 
     if len(args) >= 1:
@@ -127,7 +127,7 @@ __mod_name__ = "Dogbin"
 
 DOGBIN_HANDLER = DisableAbleCommandHandler("dogbin", dogbin, pass_args=True)
 GETDOGBIN_HANDLER = DisableAbleCommandHandler("getdogbin", get_dogbin_content, pass_args=True)
-DOGBINSTATS_HANDLER = DisableAbleCommandHandler("dogbinstats", getdogbin_stats, pass_args=True)
+DOGBINSTATS_HANDLER = DisableAbleCommandHandler("dogbinstats", get_dogbin_stats, pass_args=True)
 
 dispatcher.add_handler(DOGBIN_HANDLER)
 dispatcher.add_handler(GETDOGBIN_HANDLER)

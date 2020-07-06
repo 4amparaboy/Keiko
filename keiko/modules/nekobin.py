@@ -9,7 +9,7 @@ from keiko.modules.disable import DisableAbleCommandHandler
 
 
 @run_async
-def paste(bot: Bot, update: Update, args: List[str]):
+def nekobin(bot: Bot, update: Update, args: List[str]):
     message = update.effective_message
 
     if message.reply_to_message:
