@@ -75,5 +75,5 @@ __help__ = """ Youtube audio Downloader
 """
 __mod_name__ = "YT MP3 Downloader"
 
-music_handler = CommandHandler('ymusic', ymusic, pass_args=True)
+YMUSIC_HANDLER = CommandHandler('ymusic', ymusic, pass_args=True)
 dispatcher.add_handler(YMUSIC_HANDLER)
