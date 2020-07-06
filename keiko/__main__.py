@@ -56,10 +56,10 @@ And the following:
 
 LYNDA_IMG = "https://telegra.ph/file/39b998ed059ae7e8bc108.jpg"
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
-Lynda is hosted on one of Digital Ocean Servers. \
-You can donate to the original writer of the Base code, Paul
-There are two ways of supporting him; [PayPal](paypal.me/PaulSonOfLars), or [Monzo](monzo.me/paulnionvestergaardlarsen)."""
+DONATE_STRING = """Heya, glad to hear that you are willing to donate!
+Keiko is hosted on free dynos. \
+As you know that Free means More downtimes, Consider donating to the BOT owner to Improve our Services.
+"""
 
 IMPORTED = {}
 MIGRATEABLE = []
