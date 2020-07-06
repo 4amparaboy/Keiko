@@ -28,11 +28,11 @@ from telegram import Bot, Update, ParseMode
 from telegram.ext import run_async
 
 import ileana.modules.fun_strings as fun_strings
-from ileana import dispatcher
-from ileana.modules.disable import DisableAbleCommandHandler
-from ileana.modules.helper_funcs.chat_status import is_user_admin
-from ileana.modules.helper_funcs.extraction import extract_user
-from ileana.modules.disable import DisableAbleCommandHandler, DisableAbleRegexHandler
+from keiko import dispatcher
+from keiko.modules.disable import DisableAbleCommandHandler
+from keiko.modules.helper_funcs.chat_status import is_user_admin
+from keiko.modules.helper_funcs.extraction import extract_user
+from keiko.modules.disable import DisableAbleCommandHandler, DisableAbleRegexHandler
 
 WIDE_MAP = dict((i, i + 0xFEE0) for i in range(0x21, 0x7F))
 WIDE_MAP[0x20] = 0x3000
