@@ -11,7 +11,7 @@ from keiko.modules.helper_funcs.chat_status import user_admin
 
 count = 0
 @run_async
-def music(bot: Bot, update: Update, args):
+def ymusic(bot: Bot, update: Update, args):
 	message = update.effective_message
 	global count
 
