@@ -31,3 +31,5 @@ animu-cf
 uptime
 py-cpuinfo
 nekos.py
+tabulate
+parsel 
