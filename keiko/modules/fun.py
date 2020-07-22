@@ -27,7 +27,7 @@ from deeppyer import deepfry
 from telegram import Bot, Update, ParseMode
 from telegram.ext import run_async
 
-import ileana.modules.fun_strings as fun_strings
+import keiko.modules.fun_strings as fun_strings
 from keiko import dispatcher
 from keiko.modules.disable import DisableAbleCommandHandler
 from keiko.modules.helper_funcs.chat_status import is_user_admin
