@@ -546,11 +546,9 @@ __help__ = """
 """
 OWO_HANDLER = DisableAbleCommandHandler("owo", owo, admin_ok=True)
 STRETCH_HANDLER = DisableAbleCommandHandler("stretch", stretch)
-VAPOR_HANDLER = DisableAbleCommandHandler(
-    "vapor", vapor, pass_args=True, admin_ok=True)
+VAPOR_HANDLER = DisableAbleCommandHandler("vapor", vapor, pass_args=True, admin_ok=True)
 ZALGO_HANDLER = DisableAbleCommandHandler("zalgofy", zalgotext)
-DEEPFRY_HANDLER = DisableAbleCommandHandler(
-    "deepfry", deepfryer, admin_ok=True)
+DEEPFRY_HANDLER = DisableAbleCommandHandler("deepfry", deepfryer, admin_ok=True)
 SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout, pass_args=True)
 KAN_HANDLER = DisableAbleCommandHandler("kan", kan)
 CHANGEMYMIND_HANDLER = DisableAbleCommandHandler("changemymind", changemymind)
