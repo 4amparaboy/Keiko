@@ -19,29 +19,29 @@ from keiko.modules.helper_funcs.misc import paginate_modules
 PM_START_TEXT = """
 Hi {}, my name is {}!
 // I am an Anime themed group management bot with a lot of Special Features.
-I'm a Clone of Kigyō
+I'm a Clone of Lynda
 You can find the list of available commands with /help.
 ==========================
 => Report [Keiko Support](https://t.me/KeikoSupport) if I go offline
 => For New Updates Visit [Keiko Updates](https://t.me/KeikoUpdates)
-=> [Kigyō's Repo](https://github.com/Dank-del/EnterpriseALRobot)
+=> [Lynda's Repo](https://github.com/pokurt/LyndaRobot)
 ==========================
 `Maintained by` [Sophisticated Delelopers](https://t.me/Dev_OwO)
 
 """
 
 HELP_STRINGS = """
-Hey there! My name is *{}*.
+Hey there[!](https://telegra.ph/file/02cc6f9d677781a34edf4.jpg) My name is *{}*.
 I'm a part of [Sophisticated Developers](https://t.me/Dev_OwO).
 Have a look at the following for an idea of some of \
 the things I can help you with.
 I'm managed by [WRENCH](https://t.me/T_b0n3)
 ==========================
-Cloned from [Kigyō](https://github.com/Dank-del/EnterpriseALRobot)
+Cloned from [Lynda](https://github.com/pokurt/LyndaRobot)
 Chatbot module from [TheRealPhoenixBot](https://github.com/rsktg/TheRealPhoenixBot.git)
 Disaster module from [SaitamaRobot](https://github.com/AnimeKaizoku/SaitamaRobot)
 ==========================
-*Main* commands available[:](https://telegra.ph/file/02cc6f9d677781a34edf4.jpg)
+*Main* commands available :
  - /start: start the bot
  - /help: PM's you this message.
  - /help <module name>: PM's you info about that module.
@@ -54,7 +54,7 @@ Disaster module from [SaitamaRobot](https://github.com/AnimeKaizoku/SaitamaRobot
 And the following:
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-LYNDA_IMG = "https://telegra.ph/file/39b998ed059ae7e8bc108.jpg"
+KEIKO_IMG = "https://telegra.ph/file/39b998ed059ae7e8bc108.jpg"
 
 DONATE_STRING = """Heya, glad to hear that you are willing to donate!
 Keiko is hosted on free dynos. \
@@ -151,7 +151,7 @@ def start(bot: Bot, update: Update, args: List[str]):
                 [[InlineKeyboardButton(text="👥 Add Keiko to your group", url="https://t.me/KeikoSDbot?startgroup=new")],
                 [InlineKeyboardButton(text="🙋 Support Group", url="https://t.me/KeikoSupport"), InlineKeyboardButton(text="🚫 Global Logs", url="https://t.me/KeikoGLogs")],
                 [InlineKeyboardButton(text="❔ Help", callback_data="help_back"), InlineKeyboardButton(text="🔔 Update Channel", url="https://t.me/KeikoUpdates")]])
-            update.effective_message.reply_photo(LYNDA_IMG,
+            update.effective_message.reply_photo(KEIKO_IMG,
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
                 parse_mode=ParseMode.MARKDOWN, reply_markup=buttons)
     else:
