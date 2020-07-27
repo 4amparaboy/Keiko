@@ -38,20 +38,11 @@ WIDE_MAP = dict((i, i + 0xFEE0) for i in range(0x21, 0x7F))
 WIDE_MAP[0x20] = 0x3000
 
 @run_async
-def runs(bot: Bot, update: Update):
-    update.effective_message.reply_text(random.choice(fun_strings.RUN_STRINGS))
-# D A N K modules by @deletescape vvv
-
-
 def owo(bot: Bot, update: Update):
     message = update.effective_message
-    chat = update.effective_chat
-
-    reply_text = message.reply_to_message.reply_text if message.reply_to_message else message.reply_text
     if not message.reply_to_message:
         message.reply_text("I need a message to meme.")
     else:
-        faces = ['(・`ω´・)',';;w;;','owo','UwU','>w<','^w^','\(^o\) (/o^)/','( ^ _ ^)∠☆','(ô_ô)','~:o',';____;', '(*^*)', '(>_', '(♥_♥)', '*(^O^)*', '((+_+))']
         reply_text = re.sub(r'[rl]', "w", message.reply_to_message.text)
         reply_text = re.sub(r'[ｒｌ]', "ｗ", message.reply_to_message.text)
         reply_text = re.sub(r'[RL]', 'W', reply_text)
@@ -60,12 +51,17 @@ def owo(bot: Bot, update: Update):
         reply_text = re.sub(r'ｎ([ａｅｉｏｕ])', r'ｎｙ\1', reply_text)
         reply_text = re.sub(r'N([aeiouAEIOU])', r'Ny\1', reply_text)
         reply_text = re.sub(r'Ｎ([ａｅｉｏｕＡＥＩＯＵ])', r'Ｎｙ\1', reply_text)
-        reply_text = re.sub(r'\!+', ' ' + random.choice(faces), reply_text)
-        reply_text = re.sub(r'！+', ' ' + random.choice(faces), reply_text)
+        reply_text = re.sub(r'\!+', ' ' + random.choice(fun_strings.FACES), reply_text)
+        reply_text = re.sub(r'！+', ' ' + random.choice(fun_strings.FACES), reply_text)
         reply_text = reply_text.replace("ove", "uv")
         reply_text = reply_text.replace("ｏｖｅ", "ｕｖ")
-        reply_text += ' ' + random.choice(faces)
+        reply_text += ' ' + random.choice(fun_strings.FACES)
         message.reply_to_message.reply_text(reply_text)
+
+@run_async
+def runs(_bot: Bot, update: Update):
+    update.effective_message.reply_text(random.choice(fun_strings.RUN_STRINGS))
+
 
 @run_async
 def slap(bot: Bot, update: Update, args: List[str]):
@@ -129,18 +125,12 @@ def stretch(bot: Bot, update: Update):
         message.reply_text("I need a message to meme.")
     else:
         count = random.randint(3, 10)
-        reply_text = re.sub(r'([aeiouAEIOUａｅｉｏｕＡＥＩＯＵ])', (r'\1' * count), message.reply_to_message.text)
+        reply_text = re.sub(
+            r'([aeiouAEIOUａｅｉｏｕＡＥＩＯＵ])',
+            (r'\1' * count),
+            message.reply_to_message.text)
         message.reply_to_message.reply_text(reply_text)
 
-        if isinstance(temp, list):
-            if temp[2] == "tmute":
-                if is_user_admin(chat, message.from_user.id):
-                    reply_text(temp[1])
-                    return
-
-                mutetime = int(time.time() + 60)
-                bot.restrict_chat_member(chat.id, message.from_user.id, until_date=mutetime, can_send_messages=False)
-            reply_text(temp[0])
 @run_async
 def vapor(bot: Bot, update: Update, args: List[str]):
     message = update.effective_message
@@ -166,28 +156,6 @@ def vapor(bot: Bot, update: Update, args: List[str]):
 
 
 @run_async
-def kan(bot: Bot, update: Update):
-    msg = update.effective_message
-    if not msg.reply_to_message:
-        msg.reply_text("need to reply to a message to kannify.")
-    else:
-        user1 = bot.first_name
-        user2 = curr_user
-        text = msg.reply_to_message.text
-        r = requests.get(f"https://nekobot.xyz/api/imagegen?type=kannagen&text={text}").json()
-        url = r.get("message")
-        if not url:
-            msg.reply_text("No URL was received from the API!")
-            return
-        with open("temp.png","wb") as f:
-            f.write(requests.get(url).content)
-        img = Image.open("temp.png")
-        img.save("temp.webp","webp")
-        msg.reply_document(open("temp.webp","rb"))
-        os.remove("temp.webp")
-
-
-@run_async
 def eightball(bot: Bot, update: Update):
     msg = update.effective_message
     target = '8ball'
@@ -198,7 +166,6 @@ def eightball(bot: Bot, update: Update):
     msg.reply_document(open("temp.webp","rb"))
     os.remove("temp.webp")
 
-     reply_text(reply, parse_mode=ParseMode.HTML)
 @run_async
 def changemymind(bot: Bot, update: Update):
     msg = update.effective_message
@@ -218,7 +185,6 @@ def changemymind(bot: Bot, update: Update):
         msg.reply_document(open("temp.webp","rb"))
         os.remove("temp.webp")
 
-    reply_text(reply, parse_mode=ParseMode.HTML)
 
 @run_async
 def trumptweet(bot: Bot, update: Update):
@@ -377,8 +343,6 @@ def shrug(bot: Bot, update: Update):
     msg = update.effective_message
     reply_text = msg.reply_to_message.reply_text if msg.reply_to_message else msg.reply_text
     reply_text(r"¯\_(ツ)_/¯")
-    reply_text = string.capwords(' '.join(reply_text))
-    message.reply_to_message.reply_text(reply_text)
 
 
 @run_async
@@ -386,73 +350,19 @@ def bluetext(bot: Bot, update: Update):
     msg = update.effective_message
     reply_text = msg.reply_to_message.reply_text if msg.reply_to_message else msg.reply_text
     reply_text("/BLUE /TEXT\n/MUST /CLICK\n/I /AM /A /STUPID /ANIMAL /THAT /IS /ATTRACTED /TO /COLORS")
-def deepfryer(bot: Bot, update: Update):
-    message = update.effective_message
-    if message.reply_to_message:
-        data = message.reply_to_message.photo
-        data2 = message.reply_to_message.sticker
-    else:
-        data = []
-        data2 = []
-
-    # check if message does contain media and cancel when not
-    if not data and not data2:
-        message.reply_text("What am I supposed to do with this?!")
-        return
-
-@run_async
-def rlg(bot: Bot, update: Update):
-    eyes = random.choice(fun_strings.EYES)
-    mouth = random.choice(fun_strings.MOUTHS)
-    ears = random.choice(fun_strings.EARS)
-    # download last photo (highres) as byte array
-    if data:
-        photodata = data[len(data) - 1].get_file().download_as_bytearray()
-        image = Image.open(io.BytesIO(photodata))
-    elif data2:
-        sticker = bot.get_file(data2.file_id)
-        sticker.download('sticker.png')
-        image = Image.open("sticker.png")
-
-    if len(eyes) == 2:
-        repl = ears[0] + eyes[0] + mouth[0] + eyes[1] + ears[1]
-    else:
-        repl = ears[0] + eyes[0] + mouth[0] + eyes[0] + ears[1]
-    update.message.reply_text(repl)
-    # the following needs to be executed async (because dumb lib)
-    loop = asyncio.new_event_loop()
-    loop.run_until_complete(process_deepfry(image, message.reply_to_message, bot))
-    loop.close()
 
 
 @run_async
-def decide(bot: Bot, update: Update):
+def decide(_bot: Bot, update: Update):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_text(random.choice(fun_strings.DECIDE))
-async def process_deepfry(image: Image, reply: Message, bot: Bot):
-    # DEEPFRY IT
-    image = await deepfry(
-        img=image,
-        token=os.getenv('DEEPFRY_TOKEN', ''),
-        url_base='westeurope'
-    )
-
-    bio = BytesIO()
-    bio.name = 'image.jpeg'
-    image.save(bio, 'JPEG')
-
-    # send it back
-    bio.seek(0)
-    reply.reply_photo(bio)
-    if Path("sticker.png").is_file():
-        os.remove("sticker.png")
-
 
 
 @run_async
 def table(bot: Bot, update: Update):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_text(random.choice(fun_strings.TABLE))
+
 def shout(bot: Bot, update: Update, args):
     if len(args) == 0:
         update.effective_message.reply_text("Where is text?")
@@ -504,6 +414,27 @@ def clock(_bot: Bot, update: Update):
         message.edit_text(i)
         time.sleep(0.5)
 
+@run_async
+def copypasta(_bot: Bot, update: Update):
+    message = update.effective_message
+    reply_text = random.choice(fun_strings.emojis)
+    # choose a random character in the message to be substituted with 🅱️
+    b_char = random.choice(message.reply_to_message.text).lower()
+    for c in message.reply_to_message.text:
+        if c == " ":
+            reply_text += random.choice(fun_strings.emojis)
+        elif c in fun_strings.emojis:
+            reply_text += c
+            reply_text += random.choice(fun_strings.emojis)
+        elif c.lower() == b_char:
+            reply_text += "🅱️"
+        else:
+            if bool(random.getrandbits(1)):
+                reply_text += c.upper()
+            else:
+                reply_text += c.lower()
+    reply_text += random.choice(fun_strings.emojis)
+    message.reply_to_message.reply_text(reply_text)
 
 __help__ = """
  - /runs: reply a random string from an array of replies.
@@ -516,7 +447,6 @@ __help__ = """
  - /insult : Insults the retar
  - /bluetext : check urself :V
  - /roll : Roll a dice.
- - /rlg : Join ears,nose,mouth and create an emo ;-;
  - /pat : pats a user by a reply to the message
  - /hug : hugs a user by a reply to the message
  - /weebify <text>: returns a weebified text
@@ -532,20 +462,16 @@ __help__ = """
  - /mock: mocks a spongebob image with text
  - /shout: Write anything that u want it to should
  - /zalgofy: reply to a message to g̫̞l̼̦i̎͡tͫ͢c̘ͭh̛̗ it out!
- - /kan: reply a text to kannafy.
  - /changemymind: reply a text to stickerize.
  - /trumptweet: reply a text for trump tweet.
  - /eightball: shakes 8ball.
 """
 OWO_HANDLER = DisableAbleCommandHandler("owo", owo, admin_ok=True)
 STRETCH_HANDLER = DisableAbleCommandHandler("stretch", stretch)
-VAPOR_HANDLER = DisableAbleCommandHandler(
-    "vapor", vapor, pass_args=True, admin_ok=True)
+VAPOR_HANDLER = DisableAbleCommandHandler("vapor", vapor, pass_args=True, admin_ok=True)
 ZALGO_HANDLER = DisableAbleCommandHandler("zalgofy", zalgotext)
-DEEPFRY_HANDLER = DisableAbleCommandHandler(
-    "deepfry", deepfryer, admin_ok=True)
+DEEPFRY_HANDLER = DisableAbleCommandHandler("deepfry", deepfry, admin_ok=True)
 SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout, pass_args=True)
-KAN_HANDLER = DisableAbleCommandHandler("kan", kan)
 CHANGEMYMIND_HANDLER = DisableAbleCommandHandler("changemymind", changemymind)
 TRUMPTWEET_HANDLER = DisableAbleCommandHandler("trumptweet", trumptweet)
 EIGHTBALL_HANDLER = DisableAbleCommandHandler("eightball", eightball)
@@ -561,7 +487,6 @@ ROLL_HANDLER = DisableAbleCommandHandler("roll", roll)
 TOSS_HANDLER = DisableAbleCommandHandler("toss", toss)
 SHRUG_HANDLER = DisableAbleCommandHandler("shrug", shrug)
 BLUETEXT_HANDLER = DisableAbleCommandHandler("bluetext", bluetext)
-RLG_HANDLER = DisableAbleCommandHandler("rlg", rlg)
 DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
 ABUSE_HANDLER = DisableAbleCommandHandler("abuse", abuse)
@@ -587,7 +512,6 @@ dispatcher.add_handler(ROLL_HANDLER)
 dispatcher.add_handler(TOSS_HANDLER)
 dispatcher.add_handler(SHRUG_HANDLER)
 dispatcher.add_handler(BLUETEXT_HANDLER)
-dispatcher.add_handler(RLG_HANDLER)
 dispatcher.add_handler(DECIDE_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
 dispatcher.add_handler(ABUSE_HANDLER)
@@ -612,7 +536,6 @@ dispatcher.add_handler(STRETCH_HANDLER)
 dispatcher.add_handler(VAPOR_HANDLER)
 dispatcher.add_handler(ZALGO_HANDLER)
 dispatcher.add_handler(DEEPFRY_HANDLER)
-dispatcher.add_handler(KAN_HANDLER)
 dispatcher.add_handler(CHANGEMYMIND_HANDLER)
 dispatcher.add_handler(TRUMPTWEET_HANDLER)
 dispatcher.add_handler(EIGHTBALL_HANDLER)
@@ -628,7 +551,6 @@ __command_list__ = [
     "toss",
     "shrug",
     "bluetext",
-    "rlg",
     "decide",
     "table",
     "insult",
@@ -652,7 +574,6 @@ __command_list__ = [
     "zalgofy",
     "deepfry",
     "shout",
-    "kan",
     "changemymind",
     "trumptweet",
     "eightball"]
@@ -663,7 +584,6 @@ __handlers__ = [
     TOSS_HANDLER,
     SHRUG_HANDLER,
     BLUETEXT_HANDLER,
-    RLG_HANDLER,
     DECIDE_HANDLER,
     TABLE_HANDLER,
     ABUSE_HANDLER,
@@ -691,7 +611,6 @@ __handlers__ = [
     VAPOR_HANDLER,
     ZALGO_HANDLER,
     DEEPFRY_HANDLER,
-    KAN_HANDLER,
     CHANGEMYMIND_HANDLER,
     TRUMPTWEET_HANDLER,
     EIGHTBALL_HANDLER]
