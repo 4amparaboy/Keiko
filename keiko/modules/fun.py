@@ -148,8 +148,6 @@ def vapor(bot: Bot, update: Update, args: List[str]):
         if not args:
             message.reply_text("I need a message to convert to vaporwave text.")
         else:
-            reply_text(temp)
-        return
             noreply = True
             data = message.text.split(None, 1)[1]
     elif message.reply_to_message:
@@ -158,16 +156,13 @@ def vapor(bot: Bot, update: Update, args: List[str]):
     else:
         data = ''
 
-    if user_id:
+
     reply_text = str(data).translate(WIDE_MAP)
     if noreply:
         message.reply_text(reply_text)
     else:
         message.reply_to_message.reply_text(reply_text)
 
-        slapped_user = bot.get_chat(user_id)
-        user1 = curr_user
-        user2 = html.escape(slapped_user.first_name)
 
 
 @run_async
