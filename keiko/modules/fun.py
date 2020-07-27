@@ -27,7 +27,7 @@ from deeppyer import deepfry
 from telegram import Bot, Update, ParseMode
 from telegram.ext import run_async
 
-import ileana.modules.fun_strings as fun_strings
+import keiko.modules.fun_strings as fun_strings
 from keiko import dispatcher
 from keiko.modules.disable import DisableAbleCommandHandler
 from keiko.modules.helper_funcs.chat_status import is_user_admin
@@ -186,10 +186,7 @@ def kan(bot: Bot, update: Update):
         msg.reply_document(open("temp.webp","rb"))
         os.remove("temp.webp")
 
-    temp = random.choice(fun_strings.SLAP_TEMPLATES)
-    item = random.choice(fun_strings.ITEMS)
-    hit = random.choice(fun_strings.HIT)
-    throw = random.choice(fun_strings.THROW)
+
 @run_async
 def eightball(bot: Bot, update: Update):
     msg = update.effective_message
@@ -201,7 +198,7 @@ def eightball(bot: Bot, update: Update):
     msg.reply_document(open("temp.webp","rb"))
     os.remove("temp.webp")
 
-    reply = temp.format(user1=user1, user2=user2, item=item, hits=hit, throws=throw)
+     reply_text(reply, parse_mode=ParseMode.HTML)
 @run_async
 def changemymind(bot: Bot, update: Update):
     msg = update.effective_message
@@ -222,6 +219,7 @@ def changemymind(bot: Bot, update: Update):
         os.remove("temp.webp")
 
     reply_text(reply, parse_mode=ParseMode.HTML)
+
 @run_async
 def trumptweet(bot: Bot, update: Update):
     msg = update.effective_message
