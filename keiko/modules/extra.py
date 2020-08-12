@@ -21,7 +21,7 @@ opener.addheaders = [('User-agent', useragent)]
 
 
 @run_async
-def app(_bot: Bot, update: Update):
+def app(bot: Bot, update: Update):
     message = update.effective_message
     try:
         progress_message = update.effective_message.reply_text(
@@ -70,7 +70,7 @@ def app(_bot: Bot, update: Update):
 
 
 @run_async
-def ud(_bot: Bot, update: Update):
+def ud(bot: Bot, update: Update):
     message = update.effective_message
     text = message.text[len('/ud '):]
     results = requests.get(
@@ -83,7 +83,7 @@ def ud(_bot: Bot, update: Update):
 
 
 @run_async
-def tts(_bot: Bot, update: Update, args):
+def tts(bot: Bot, update: Update, args):
     datetime.strftime(datetime.now(), "%d.%m.%Y %H:%M:%S")
     datetime.now().strftime("%d%m%y-%H%M%S%f")
     reply = " ".join(args)
@@ -336,7 +336,7 @@ def generate_time(to_find: str, findtype: List[str]) -> str:
 
 
 @run_async
-def gettime(_bot: Bot, update: Update):
+def gettime(bot: Bot, update: Update):
     message = update.effective_message
 
     try:
@@ -365,7 +365,7 @@ def gettime(_bot: Bot, update: Update):
 
 
 @run_async
-def convert(_bot: Bot, update: Update):
+def convert(bot: Bot, update: Update):
     args = update.effective_message.text.split(" ", 3)
     if len(args) > 1:
 
@@ -442,7 +442,7 @@ def wall(bot: Bot, update: Update, args):
 
 
 @run_async
-def covid(_bot: Bot, update: Update):
+def covid(bot: Bot, update: Update):
     message = update.effective_message
     text = message.text.split(' ', 1)
     if len(text) == 1:
