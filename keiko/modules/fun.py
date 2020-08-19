@@ -59,7 +59,7 @@ def owo(bot: Bot, update: Update):
         message.reply_to_message.reply_text(reply_text)
 
 @run_async
-def runs(bot: Bot, update: Update):
+def runs(_bot: Bot, update: Update):
     update.effective_message.reply_text(random.choice(fun_strings.RUN_STRINGS))
 
 
@@ -230,7 +230,7 @@ def roll(bot: Bot, update: Update):
     update.message.reply_text(random.choice(range(1, 7)))
 
 @run_async
-def bmoji(bot: Bot, update: Update):
+def bmoji(_bot: Bot, update: Update):
     message = update.effective_message
     # choose a random character in the message to be substituted with 🅱️
     b_char = random.choice(message.reply_to_message.text).lower()
@@ -240,7 +240,7 @@ def bmoji(bot: Bot, update: Update):
 
 
 @run_async
-def clapmoji(bot: Bot, update: Update):
+def clapmoji(_bot: Bot, update: Update):
     message = update.effective_message
     reply_text = "👏 "
     reply_text += message.reply_to_message.text.replace(" ", " 👏 ")
@@ -249,7 +249,7 @@ def clapmoji(bot: Bot, update: Update):
 
 
 @run_async
-def angrymoji(bot: Bot, update: Update):
+def angrymoji(_bot: Bot, update: Update):
     message = update.effective_message
     reply_text = "😡 "
     for i in message.reply_to_message.text:
@@ -262,7 +262,7 @@ def angrymoji(bot: Bot, update: Update):
 
 
 @run_async
-def crymoji(bot: Bot, update: Update):
+def crymoji(_bot: Bot, update: Update):
     message = update.effective_message
     reply_text = "😭 "
     for i in message.reply_to_message.text:
@@ -275,7 +275,7 @@ def crymoji(bot: Bot, update: Update):
 
 
 @run_async
-def me_too(bot: Bot, update: Update):
+def me_too(_bot: Bot, update: Update):
     message = update.effective_message
     if random.randint(0, 100) > 60:
         reply = random.choice(
@@ -284,7 +284,7 @@ def me_too(bot: Bot, update: Update):
 
 
 @run_async
-def weebify(bot: Bot, update: Update, args: List[str]):
+def weebify(_bot: Bot, update: Update, args: List[str]):
     string = '  '.join(args).lower()
     for normiecharacter in string:
         if normiecharacter in fun_strings.NORMIEFONT:
@@ -353,7 +353,7 @@ def bluetext(bot: Bot, update: Update):
 
 
 @run_async
-def decide(bot: Bot, update: Update):
+def decide(_bot: Bot, update: Update):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_text(random.choice(fun_strings.DECIDE))
 
@@ -382,7 +382,7 @@ def shout(bot: Bot, update: Update, args):
 
 
 @run_async
-def react(bot: Bot, update: Update):
+def react(_bot: Bot, update: Update):
     message = update.effective_message
     react = random.choice(fun_strings.REACTIONS)
     if message.reply_to_message:
@@ -392,7 +392,7 @@ def react(bot: Bot, update: Update):
 
 
 @run_async
-def police(bot: Bot, update: Update):
+def police(_bot: Bot, update: Update):
     message = update.effective_message.reply_text('/police')
     for i in fun_strings.POLICE:
         message.edit_text(i)
@@ -400,7 +400,7 @@ def police(bot: Bot, update: Update):
 
 
 @run_async
-def moon(bot: Bot, update: Update):
+def moon(_bot: Bot, update: Update):
     message = update.effective_message.reply_text('/moon')
     for i in fun_strings.MOON:
         message.edit_text(i)
@@ -408,14 +408,14 @@ def moon(bot: Bot, update: Update):
 
 
 @run_async
-def clock(bot: Bot, update: Update):
+def clock(_bot: Bot, update: Update):
     message = update.effective_message.reply_text('/moon')
     for i in fun_strings.CLOCK:
         message.edit_text(i)
         time.sleep(0.5)
 
 @run_async
-def copypasta(bot: Bot, update: Update):
+def copypasta(_bot: Bot, update: Update):
     message = update.effective_message
     reply_text = random.choice(fun_strings.emojis)
     # choose a random character in the message to be substituted with 🅱️
